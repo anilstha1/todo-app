@@ -1,15 +1,24 @@
-import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useState, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
 import {login} from "../../store/slices/authSlice";
 
 export default function Login() {
   const [credentials, setCredentials] = useState({username: "", password: ""});
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate authentication
     dispatch(login({username: credentials.username}));
+    navigate("/");
   };
 
   return (

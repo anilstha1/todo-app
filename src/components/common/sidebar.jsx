@@ -40,7 +40,7 @@ function Sidebar() {
         </h1>
       </div>
 
-      <div className="flex flex-col bg-[#EEF6EF] dark:bg-[#232323] mt-[102px] py-6">
+      <div className="flex flex-col bg-white dark:bg-[#232323] mt-[102px] py-6">
         <Link
           to="/"
           className={`px-4 py-2 text-[15px] font-medium text-xl flex gap-4 ${

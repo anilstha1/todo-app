@@ -155,16 +155,31 @@ function BaseTaskList({tasks, title, allowAdd = true}) {
                   key={task.id}
                   className="flex items-center justify-between px-4 py-2"
                 >
-                  <div className="flex items-center gap-3">
-                    <input
-                      type="checkbox"
-                      checked={task.completed}
-                      onChange={() => toggleComplete(task.id)}
-                      className="w-5 h-5 rounded-sm border-2 border-gray-300 checked:border-green-500 checked:bg-green-500"
-                    />
+                  <div className="flex items-center gap-3 py-4">
+                    <div className="relative">
+                      <input
+                        type="checkbox"
+                        checked={task.completed}
+                        onChange={() => toggleComplete(task.id)}
+                        className="peer w-5 h-5 rounded-sm border-2 border-black checked:border-green-500 checked:bg-green-500 appearance-none cursor-pointer"
+                      />
+                      <svg
+                        className="absolute top-0.5 left-0.5 w-4 h-4 text-white opacity-0 peer-checked:opacity-100 pointer-events-none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
                     <span
-                      className="text-gray-400 line-through cursor-pointer"
-                      onClick={() => setCurrentTask(task)}
+                      className={`${
+                        task.completed ? "text-gray-400 line-through" : ""
+                      }`}
                     >
                       {task.title}
                     </span>
